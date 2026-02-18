@@ -101,17 +101,24 @@ export default function AppointmentBooking({ specialist, onClose }) {
                 patient_notes: ''
             };
 
+            console.log('Booking appointment:', appointmentData);
+            
             const response = await API.post('/appointments/book', appointmentData);
+            
+            console.log('Booking response:', response.data);
             
             if (response.data.message) {
                 setConfirmed(true);
                 setTimeout(() => {
                     onClose();
+                    // Optionally redirect to appointments page
+                    window.location.href = '/appointments';
                 }, 2500);
             }
         } catch (err) {
             console.error("Booking error:", err);
-            alert(`Error: ${err.response?.data?.error || err.message}`);
+            const errorMessage = err.response?.data?.error || err.message || 'Failed to book appointment';
+            alert(`Error: ${errorMessage}\n\nPlease make sure the backend server is running on http://localhost:5000`);
         }
     };
 
