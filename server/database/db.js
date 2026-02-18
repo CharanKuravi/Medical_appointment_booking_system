@@ -17,14 +17,17 @@ db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS appointments (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
+      patient_id INTEGER,
+      doctor_id INTEGER,
       patient_name TEXT NOT NULL,
-      patient_email TEXT NOT NULL,
-      patient_phone TEXT NOT NULL,
+      patient_email TEXT,
+      patient_phone TEXT,
       doctor_name TEXT NOT NULL,
       specialty TEXT NOT NULL,
+      location TEXT,
       appointment_date TEXT NOT NULL,
       appointment_time TEXT NOT NULL,
-      status TEXT DEFAULT 'pending',
+      status TEXT DEFAULT 'confirmed',
       notes TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -34,6 +37,11 @@ db.serialize(() => {
       console.error('Error creating appointments table:', err);
     } else {
       console.log('Appointments table ready');
+      
+      // Add columns if they don't exist (for existing databases)
+      db.run(`ALTER TABLE appointments ADD COLUMN patient_id INTEGER`, () => {});
+      db.run(`ALTER TABLE appointments ADD COLUMN doctor_id INTEGER`, () => {});
+      db.run(`ALTER TABLE appointments ADD COLUMN location TEXT`, () => {});
     }
   });
 

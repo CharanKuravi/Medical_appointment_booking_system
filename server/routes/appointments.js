@@ -148,18 +148,21 @@ router.post('/book', (req, res) => {
 
   const query = `
     INSERT INTO appointments (
-      patient_name, patient_email, patient_phone,
-      doctor_name, specialty, appointment_date,
+      patient_id, doctor_id, patient_name, patient_email, patient_phone,
+      doctor_name, specialty, location, appointment_date,
       appointment_time, notes, status
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const params = [
+    patientId || null,
+    doctorId || null,
     patientName || 'Patient',
     'patient@example.com',
     '',
     specialist_name || 'Doctor',
     specialty || 'General',
+    location || 'Medical Center',
     appointment_date,
     appointment_time,
     patient_notes || '',
@@ -168,13 +171,15 @@ router.post('/book', (req, res) => {
 
   db.run(query, params, function(err) {
     if (err) {
+      console.error('Booking error:', err);
       return res.status(500).json({ error: err.message });
     }
     res.status(201).json({
       message: 'Appointment booked successfully',
       appointment: {
         id: this.lastID,
-        ...req.body
+        ...req.body,
+        status: 'confirmed'
       }
     });
   });
@@ -182,13 +187,23 @@ router.post('/book', (req, res) => {
 
 // Get appointment history by role and user ID
 router.get('/history/:role/:userId', (req, res) => {
-  const query = 'SELECT * FROM appointments ORDER BY appointment_date DESC, appointment_time DESC';
+  const { role, userId } = req.params;
   
-  db.all(query, [], (err, rows) => {
+  let query;
+  if (role === 'patient') {
+    query = 'SELECT * FROM appointments WHERE patient_id = ? ORDER BY appointment_date DESC, appointment_time DESC';
+  } else if (role === 'doctor') {
+    query = 'SELECT * FROM appointments WHERE doctor_id = ? ORDER BY appointment_date DESC, appointment_time DESC';
+  } else {
+    query = 'SELECT * FROM appointments ORDER BY appointment_date DESC, appointment_time DESC';
+  }
+  
+  db.all(query, role === 'patient' || role === 'doctor' ? [userId] : [], (err, rows) => {
     if (err) {
+      console.error('History fetch error:', err);
       return res.status(500).json({ error: err.message });
     }
-    res.json({ appointments: rows });
+    res.json({ appointments: rows || [] });
   });
 });
 

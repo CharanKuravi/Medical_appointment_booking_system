@@ -35,15 +35,21 @@ const Navbar = () => {
                     <Link to="/doctors" className="hover:text-purple-600 transition-colors">Find Doctors</Link>
                     <Link to="/departments" className="hover:text-purple-600 transition-colors">{t('departments')}</Link>
                     <Link to="/medical-explorer" className="hover:text-purple-600 transition-colors">Medical Explorer</Link>
-                    {user && (
-                        <Link to="/appointments" className="hover:text-purple-600 transition-colors font-bold">📋 My Bookings</Link>
-                    )}
                     <Link to="/emergency" className="hover:text-purple-600 transition-colors flex items-center gap-1">
                         <span className="animate-pulse">🚨</span> Emergency
                     </Link>
                 </div>
 
                 <div className="flex items-center gap-4">
+                    {user && (
+                        <Link 
+                            to="/appointments" 
+                            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-lg shadow-purple-500/30 hover:scale-105 active:scale-95 flex items-center gap-2"
+                        >
+                            📋 My Bookings
+                        </Link>
+                    )}
+                    
                     <div className="flex items-center gap-2 bg-gradient-to-r from-purple-50 to-teal-50 border border-purple-200 rounded-full px-3 py-1 text-sm">
                         <Globe size={16} className="text-purple-500" />
                         <select

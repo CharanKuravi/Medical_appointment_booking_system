@@ -90,17 +90,18 @@ export default function AppointmentBooking({ specialist, onClose }) {
             const dateString = `${year}-${month}-${day}`;
 
             const appointmentData = {
-                patient_name: user.displayName || user.email,
-                patient_email: user.email,
-                patient_phone: user.phone || 'Not provided',
-                doctor_name: specialist.title,
+                patientId: user.id,
+                doctorId: specialist.id || null,
+                patientName: user.name || user.displayName || user.email,
+                specialist_name: specialist.title,
                 specialty: specialist.specialty || specialist.expertise,
+                location: specialist.location || 'Medical Center',
                 appointment_date: dateString,
                 appointment_time: selectedTime.time,
-                notes: ''
+                patient_notes: ''
             };
 
-            const response = await API.post('/appointments', appointmentData);
+            const response = await API.post('/appointments/book', appointmentData);
             
             if (response.data.message) {
                 setConfirmed(true);
