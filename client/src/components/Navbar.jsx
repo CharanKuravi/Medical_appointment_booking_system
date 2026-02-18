@@ -38,6 +38,9 @@ const Navbar = () => {
                     <Link to="/emergency" className="hover:text-purple-600 transition-colors flex items-center gap-1">
                         <span className="animate-pulse">🚨</span> Emergency
                     </Link>
+                </div>
+
+                <div className="flex items-center gap-4">
                     {user && (
                         <Link 
                             to="/appointments" 
@@ -50,9 +53,7 @@ const Navbar = () => {
                             <div className="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-20"></div>
                         </Link>
                     )}
-                </div>
-
-                <div className="flex items-center gap-4">
+                    
                     <div className="flex items-center gap-2 bg-gradient-to-r from-purple-50 to-teal-50 border border-purple-200 rounded-full px-3 py-1 text-sm">
                         <Globe size={16} className="text-purple-500" />
                         <select
