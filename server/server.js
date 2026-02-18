@@ -16,6 +16,9 @@ const db = require('./database/db');
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/appointments', require('./routes/appointments'));
+app.use('/api/doctors', require('./routes/doctors'));
+app.use('/api/departments', require('./routes/departments'));
+app.use('/api/emergency', require('./routes/emergency'));
 
 // Health check
 app.get('/api/health', (req, res) => {

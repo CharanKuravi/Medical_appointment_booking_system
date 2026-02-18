@@ -132,4 +132,83 @@ router.get('/patient/:email', (req, res) => {
   });
 });
 
+// Book appointment (with user authentication)
+router.post('/book', (req, res) => {
+  const {
+    patientId,
+    doctorId,
+    patientName,
+    specialist_name,
+    specialty,
+    location,
+    appointment_date,
+    appointment_time,
+    patient_notes
+  } = req.body;
+
+  const query = `
+    INSERT INTO appointments (
+      patient_name, patient_email, patient_phone,
+      doctor_name, specialty, appointment_date,
+      appointment_time, notes, status
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+
+  const params = [
+    patientName || 'Patient',
+    'patient@example.com',
+    '',
+    specialist_name || 'Doctor',
+    specialty || 'General',
+    appointment_date,
+    appointment_time,
+    patient_notes || '',
+    'confirmed'
+  ];
+
+  db.run(query, params, function(err) {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.status(201).json({
+      message: 'Appointment booked successfully',
+      appointment: {
+        id: this.lastID,
+        ...req.body
+      }
+    });
+  });
+});
+
+// Get appointment history by role and user ID
+router.get('/history/:role/:userId', (req, res) => {
+  const query = 'SELECT * FROM appointments ORDER BY appointment_date DESC, appointment_time DESC';
+  
+  db.all(query, [], (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json({ appointments: rows });
+  });
+});
+
+// Cancel appointment
+router.put('/cancel/:id', (req, res) => {
+  const query = `
+    UPDATE appointments 
+    SET status = 'cancelled', updated_at = CURRENT_TIMESTAMP 
+    WHERE id = ?
+  `;
+
+  db.run(query, [req.params.id], function(err) {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    if (this.changes === 0) {
+      return res.status(404).json({ error: 'Appointment not found' });
+    }
+    res.json({ message: 'Appointment cancelled successfully' });
+  });
+});
+
 module.exports = router;
