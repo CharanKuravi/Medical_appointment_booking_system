@@ -122,18 +122,17 @@ const Navbar = () => {
                         </Link>
                     )}
                     
-                    {/* Appointments Button - Far Right (Bookmark Style) */}
+                    {/* Appointments Button - Far Right (Normal Style) */}
                     {user && (
                         <Link 
                             to="/appointments" 
-                            className="hidden md:flex relative bg-gradient-to-br from-blue-500 to-purple-600 text-white px-5 py-2.5 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all items-center gap-2 ml-2"
+                            className="hidden md:flex bg-gradient-to-br from-blue-500 to-purple-600 text-white px-5 py-2.5 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all items-center gap-2 ml-2"
                             aria-label="View my appointments"
                         >
                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                 <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                             </svg>
                             <span>Appointments</span>
-                            <div className="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-20 pointer-events-none"></div>
                         </Link>
                     )}
                 </div>
