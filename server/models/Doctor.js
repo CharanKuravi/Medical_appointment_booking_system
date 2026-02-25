@@ -1,20 +1,7 @@
-const mongoose = require('mongoose');
+// SQLite-based Doctor model
+// No Mongoose needed - using direct SQLite queries
 
-const doctorSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    specialization: { type: String, required: true },
-    bio: { type: String },
-    availability: [
-        {
-            day: { type: String, required: true }, // e.g., 'Monday'
-            timeSlots: [
-                {
-                    from: { type: String, required: true }, // e.g., '09:00'
-                    to: { type: String, required: true }  // e.g., '10:00'
-                }
-            ]
-        }
-    ]
-});
-
-module.exports = mongoose.model('Doctor', doctorSchema);
+module.exports = {
+    // Doctor model is handled directly in database/db.js
+    // All queries are done through the db connection
+};

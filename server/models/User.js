@@ -1,11 +1,7 @@
-const mongoose = require('mongoose');
+// SQLite-based User model
+// No Mongoose needed - using direct SQLite queries
 
-const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    role: { type: String, enum: ['patient', 'doctor', 'admin'], default: 'patient' },
-    createdAt: { type: Date, default: Date.now }
-});
-
-module.exports = mongoose.model('User', userSchema);
+module.exports = {
+    // User model is handled directly in database/db.js
+    // All queries are done through the db connection
+};
