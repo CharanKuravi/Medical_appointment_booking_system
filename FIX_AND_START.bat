@@ -55,8 +55,15 @@ call npm install
 if errorlevel 1 (
     color 0C
     echo ERROR: Failed to install server dependencies!
-    pause
-    exit /b 1
+    echo.
+    echo Trying to fix...
+    call npm cache clean --force
+    call npm install
+    if errorlevel 1 (
+        echo Still failed. Please check your internet connection.
+        pause
+        exit /b 1
+    )
 )
 cd ..
 
