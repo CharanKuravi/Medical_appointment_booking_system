@@ -111,8 +111,8 @@ export default function AppointmentBooking({ specialist, onClose }) {
                 setConfirmed(true);
                 setTimeout(() => {
                     onClose();
-                    // Optionally redirect to appointments page
-                    window.location.href = '/appointments';
+                    // Don't use window.location.href - it reloads and loses auth state
+                    // Just close the modal, user can navigate to appointments manually
                 }, 2500);
             }
         } catch (err) {

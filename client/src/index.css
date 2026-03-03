@@ -2,24 +2,189 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 240, 253, 244;
   --background-end-rgb: 255, 255, 255;
 }
 
 body {
-  @apply bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 text-slate-800 font-sans;
+  @apply bg-gradient-to-br from-green-50 via-white to-emerald-50 text-slate-800 font-sans;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Skeuomorphic Design System - Green Theme */
+
+/* Realistic Card with depth and texture */
+.skeuo-card {
+  @apply bg-gradient-to-br from-white to-green-50 rounded-3xl p-8 border-2 border-green-200/50;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    0 12px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.skeuo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+  border-radius: 1.5rem 1.5rem 0 0;
+  pointer-events: none;
+}
+
+/* Pressed/Inset effect */
+.skeuo-inset {
+  @apply bg-gradient-to-br from-green-100 to-green-50 rounded-2xl p-6;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 4px 8px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Realistic Button */
+.skeuo-button {
+  @apply bg-gradient-to-b from-green-500 to-green-700 text-white font-bold px-8 py-4 rounded-2xl;
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.3) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.skeuo-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+  border-radius: 1rem 1rem 0 0;
+  pointer-events: none;
+}
+
+.skeuo-button:hover {
+  @apply from-green-600 to-green-800;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.3) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+    0 6px 12px rgba(0, 0, 0, 0.25),
+    0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.skeuo-button:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.2) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.3) inset,
+    0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Realistic Input Field */
+.skeuo-input {
+  @apply bg-gradient-to-br from-white to-green-50 rounded-xl px-4 py-3 border-2 border-green-300;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 2px rgba(0, 0, 0, 0.05),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.skeuo-input:focus {
+  @apply border-green-400 outline-none;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 2px rgba(0, 0, 0, 0.05),
+    0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+/* Realistic Container with texture */
+.skeuo-container {
+  @apply bg-gradient-to-br from-white via-green-50 to-white rounded-3xl p-12;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 8px 16px rgba(0, 0, 0, 0.08),
+    0 16px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.skeuo-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+  border-radius: 1.5rem 1.5rem 0 0;
+  pointer-events: none;
+}
+
+/* Realistic Icon Container */
+.skeuo-icon {
+  @apply w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Premium card styling with skeuomorphic depth */
+.premium-card {
+  @apply bg-gradient-to-br from-white via-green-50 to-white rounded-3xl border-2 border-green-200/60;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.05),
+    0 10px 20px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+  border-radius: 1.5rem 1.5rem 0 0;
+  pointer-events: none;
+}
+
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 8px 12px rgba(0, 0, 0, 0.08),
+    0 20px 40px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
 .glass-morphism {
-  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
-}
-
-.premium-card {
-  @apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-purple-100/50 hover:border-purple-200;
+  @apply bg-white/40 backdrop-blur-xl rounded-3xl border border-white/60;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
 @theme {
-  --color-primary: #8b5cf6;
-  --color-secondary: #06b6d4;
-  --color-accent: #ec4899;
+  --color-primary: #22c55e;
+  --color-secondary: #10b981;
+  --color-accent: #34d399;
 }

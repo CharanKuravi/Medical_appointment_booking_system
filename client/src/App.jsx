@@ -10,9 +10,12 @@ import PatientDashboard from './pages/PatientDashboard';
 import DoctorDashboard from './pages/DoctorDashboard';
 import MedicalExplorer from './pages/MedicalExplorer';
 import FindDoctors from './pages/FindDoctors';
+import DoctorProfile from './pages/DoctorProfile';
 import Departments from './pages/Departments';
 import Appointments from './pages/Appointments';
 import Emergency from './pages/Emergency';
+import LiveAssistant from './pages/LiveAssistant';
+import ChatBotPage from './pages/ChatBotPage';
 
 // Components
 import Navbar from './components/Navbar';
@@ -31,9 +34,12 @@ function App() {
               <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
               <Route path="/medical-explorer" element={<MedicalExplorer />} />
               <Route path="/doctors" element={<FindDoctors />} />
+              <Route path="/doctor/:id" element={<DoctorProfile />} />
               <Route path="/departments" element={<Departments />} />
               <Route path="/appointments" element={<Appointments />} />
               <Route path="/emergency" element={<Emergency />} />
+              <Route path="/live-assistant" element={<LiveAssistant />} />
+              <Route path="/chatbot" element={<ChatBotPage />} />
             </Routes>
           </main>
           <footer className="bg-gradient-to-r from-purple-900 via-blue-900 to-teal-900 text-white py-8 text-center mt-auto relative overflow-hidden">
