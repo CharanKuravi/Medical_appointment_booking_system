@@ -54,6 +54,56 @@ const Home = () => {
         <div className="bg-gradient-to-br from-green-50 via-white to-emerald-50">
             {/* Hero Section */}
             <section className="bg-gradient-to-br from-green-100/50 via-white to-emerald-100/30 py-20 px-6 overflow-hidden relative">
+                {/* Animated Heartbeat Grid Background */}
+                <div className="absolute inset-0 opacity-50 pointer-events-none">
+                    <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                        <defs>
+                            {/* Darker Green Grid Pattern */}
+                            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(22, 163, 74, 0.6)" strokeWidth="1"/>
+                            </pattern>
+                        </defs>
+                        
+                        {/* Grid Background */}
+                        <rect width="100%" height="100%" fill="url(#grid)" />
+                        
+                        {/* Continuous Realistic ECG Heartbeat Pattern */}
+                        <g>
+                            {/* First continuous line with varied spike heights */}
+                            <path d="M-500,250 Q-450,250 -400,250 L-380,250 L-370,243 L-360,257 L-350,250 Q-340,250 -330,250 L-310,250 L-300,170 L-290,330 L-280,250 Q-270,250 -200,250 Q-150,250 -100,250 L-80,250 L-70,240 L-60,260 L-50,250 Q-40,250 -30,250 L-10,250 L0,200 L10,300 L20,250 Q30,250 100,250 Q150,250 200,250 L220,250 L230,246 L240,254 L250,250 Q260,250 270,250 L290,250 L300,160 L310,340 L320,250 Q330,250 400,250 Q450,250 500,250 L520,250 L530,242 L540,258 L550,250 Q560,250 570,250 L590,250 L600,190 L610,310 L620,250 Q630,250 700,250 Q750,250 800,250 L820,250 L830,244 L840,256 L850,250 Q860,250 870,250 L890,250 L900,175 L910,325 L920,250 Q930,250 1000,250 Q1050,250 1100,250 L1120,250 L1130,241 L1140,259 L1150,250 Q1160,250 1170,250 L1190,250 L1200,185 L1210,315 L1220,250 Q1230,250 1300,250 Q1350,250 1400,250 L1420,250 L1430,247 L1440,253 L1450,250 Q1460,250 1470,250 L1490,250 L1500,165 L1510,335 L1520,250 Q1530,250 1600,250 Q1650,250 1700,250 L1720,250 L1730,245 L1740,255 L1750,250 Q1760,250 1770,250 L1790,250 L1800,195 L1810,305 L1820,250 Q1830,250 1900,250 Q1950,250 2000,250" 
+                                  fill="none" 
+                                  stroke="rgba(4, 120, 87, 1)" 
+                                  strokeWidth="3.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round">
+                                <animateTransform
+                                    attributeName="transform"
+                                    type="translate"
+                                    from="0 0"
+                                    to="600 0"
+                                    dur="4s"
+                                    repeatCount="indefinite"/>
+                            </path>
+                            
+                            {/* Second continuous line for seamless loop with varied spike heights */}
+                            <path d="M-500,250 Q-450,250 -400,250 L-380,250 L-370,243 L-360,257 L-350,250 Q-340,250 -330,250 L-310,250 L-300,170 L-290,330 L-280,250 Q-270,250 -200,250 Q-150,250 -100,250 L-80,250 L-70,240 L-60,260 L-50,250 Q-40,250 -30,250 L-10,250 L0,200 L10,300 L20,250 Q30,250 100,250 Q150,250 200,250 L220,250 L230,246 L240,254 L250,250 Q260,250 270,250 L290,250 L300,160 L310,340 L320,250 Q330,250 400,250 Q450,250 500,250 L520,250 L530,242 L540,258 L550,250 Q560,250 570,250 L590,250 L600,190 L610,310 L620,250 Q630,250 700,250 Q750,250 800,250 L820,250 L830,244 L840,256 L850,250 Q860,250 870,250 L890,250 L900,175 L910,325 L920,250 Q930,250 1000,250 Q1050,250 1100,250 L1120,250 L1130,241 L1140,259 L1150,250 Q1160,250 1170,250 L1190,250 L1200,185 L1210,315 L1220,250 Q1230,250 1300,250 Q1350,250 1400,250 L1420,250 L1430,247 L1440,253 L1450,250 Q1460,250 1470,250 L1490,250 L1500,165 L1510,335 L1520,250 Q1530,250 1600,250 Q1650,250 1700,250 L1720,250 L1730,245 L1740,255 L1750,250 Q1760,250 1770,250 L1790,250 L1800,195 L1810,305 L1820,250 Q1830,250 1900,250 Q1950,250 2000,250" 
+                                  fill="none" 
+                                  stroke="rgba(4, 120, 87, 1)" 
+                                  strokeWidth="3.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round">
+                                <animateTransform
+                                    attributeName="transform"
+                                    type="translate"
+                                    from="-600 0"
+                                    to="0 0"
+                                    dur="4s"
+                                    repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+                
                 <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-green-300/20 to-emerald-300/20 rounded-full blur-3xl -z-0"></div>
                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-green-300/20 to-teal-300/20 rounded-full blur-3xl -z-0"></div>
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
@@ -155,19 +205,26 @@ const Home = () => {
             <section className="py-24 px-6 max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12">
                     {/* Insurance */}
-                    <div className="bg-gradient-to-br from-green-100/80 via-emerald-100/60 to-teal-100/80 p-12 rounded-[2rem] border border-white shadow-xl backdrop-blur-sm">
-                        <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-lg">
-                            <ShieldCheck className="text-green-600" />
+                    <div 
+                        onClick={() => navigate('/insurance')}
+                        className="bg-gradient-to-br from-[#F9F9C1] via-[#FEFEA9] to-[#FEFEA9] p-12 rounded-[2rem] border border-[#ECDFC0] shadow-xl backdrop-blur-sm cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all group"
+                    >
+                        <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform">
+                            <ShieldCheck className="text-[#ECDFC0]" />
                         </div>
-                        <h2 className="text-3xl font-bold bg-gradient-to-r from-green-700 to-emerald-700 bg-clip-text text-transparent mb-6">{t('insurance')}</h2>
+                        <h2 className="text-3xl font-bold text-[#7A7A7A] mb-6">{t('insurance')}</h2>
                         <p className="text-slate-700 mb-8 leading-relaxed">
                             {t('insurance_rec')}
                         </p>
                         <div className="space-y-4">
-                            <div className="bg-white/70 backdrop-blur-sm p-4 rounded-xl flex justify-between items-center border border-green-200/50">
+                            <div className="bg-white/70 backdrop-blur-sm p-4 rounded-xl flex justify-between items-center border border-[#FEFEA9]/50">
                                 <span className="font-medium text-slate-700">Contact Panel:</span>
-                                <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent font-bold text-lg">+1 (800) MED-LINK</span>
+                                <span className="text-[#7A7A7A] font-bold text-lg">+1 (800) MED-LINK</span>
                             </div>
+                            <button className="w-full bg-gradient-to-r from-[#FEFEA9] to-[#ECDFC0] text-[#7A7A7A] py-3 rounded-xl font-bold hover:from-[#FEFEA9] hover:to-[#F9F9C1] transition-all shadow-lg flex items-center justify-center gap-2">
+                                View Insurance Plans
+                                <ArrowRight size={18} />
+                            </button>
                         </div>
                     </div>
 

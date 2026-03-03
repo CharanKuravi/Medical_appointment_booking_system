@@ -115,9 +115,18 @@ const Navbar = () => {
                                     <MessageCircle size={16} className="text-green-500" />
                                     <span>AI ChatBot</span>
                                 </button>
+                                <Link
+                                    to="/face-analysis"
+                                    className="block px-4 py-3 hover:bg-green-50 transition-colors text-slate-700 hover:text-green-600"
+                                    onClick={() => setServicesOpen(false)}
+                                >
+                                    Face Analysis
+                                </Link>
                             </div>
                         )}
                     </div>
+                    
+                    <Link to="/careers" className="hover:text-green-600 transition-colors">Careers</Link>
                 </div>
 
                 {/* Right Section - User Actions */}

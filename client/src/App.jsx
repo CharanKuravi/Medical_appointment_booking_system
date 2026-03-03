@@ -16,6 +16,9 @@ import Appointments from './pages/Appointments';
 import Emergency from './pages/Emergency';
 import LiveAssistant from './pages/LiveAssistant';
 import ChatBotPage from './pages/ChatBotPage';
+import Insurance from './pages/Insurance';
+import FaceAnalysis from './pages/FaceAnalysis';
+import Careers from './pages/Careers';
 
 // Components
 import Navbar from './components/Navbar';
@@ -40,10 +43,13 @@ function App() {
               <Route path="/emergency" element={<Emergency />} />
               <Route path="/live-assistant" element={<LiveAssistant />} />
               <Route path="/chatbot" element={<ChatBotPage />} />
+              <Route path="/insurance" element={<Insurance />} />
+              <Route path="/face-analysis" element={<FaceAnalysis />} />
+              <Route path="/careers" element={<Careers />} />
             </Routes>
           </main>
-          <footer className="bg-gradient-to-r from-purple-900 via-blue-900 to-teal-900 text-white py-8 text-center mt-auto relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-teal-500/10"></div>
+          <footer className="bg-gradient-to-r from-green-900 via-emerald-900 to-teal-900 text-white py-8 text-center mt-auto relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10"></div>
             <p className="relative z-10">&copy; 2026 MedLink. All rights reserved.</p>
           </footer>
         </div>
